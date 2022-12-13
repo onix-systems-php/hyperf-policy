@@ -50,7 +50,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "Hyperf\\Core\\ConfigProvider"
+            "config": "OnixSystemsPHP\\HyperfPolicy\\ConfigProvider"
         }
     }
 }
