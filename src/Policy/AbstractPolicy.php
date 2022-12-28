@@ -9,7 +9,7 @@ use OnixSystemsPHP\HyperfCore\Contract\CoreAuthenticatableProvider;
 abstract class AbstractPolicy
 {
     public function __construct(
-        private CoreAuthenticatableProvider $authenticatableProvider,
+        protected CoreAuthenticatableProvider $authenticatableProvider,
     ) {
     }
 
