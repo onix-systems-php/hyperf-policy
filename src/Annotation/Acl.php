@@ -8,10 +8,10 @@ use Hyperf\Di\Annotation\AbstractAnnotation;
 
 /**
  * @Annotation
- * @Target ({"CLASS"})
+ * @Target ({"METHOD"})
  */
-#[Attribute(Attribute::TARGET_CLASS)]
-class Policy extends AbstractAnnotation
+#[Attribute(Attribute::TARGET_METHOD)]
+class Acl extends AbstractAnnotation
 {
-    public int $priority;
+    public array $roles;
 }
