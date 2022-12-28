@@ -3,8 +3,8 @@
 declare(strict_types=1);
 namespace OnixSystemsPHP\HyperfPolicy\Policy;
 
-use Hyperf\Server\Exception\ServerException;
 use OnixSystemsPHP\HyperfCore\Contract\CoreAuthenticatableProvider;
+use OnixSystemsPHP\HyperfCore\Exception\BusinessException;
 
 abstract class AbstractPolicy
 {
@@ -25,7 +25,7 @@ abstract class AbstractPolicy
      * It is safe to assume that $attribute and $subject already passed the "supports()" method check.
      * Must return constant from OnixSystemsPHP\HyperfPolicy\Constants\PolicyVote.
      */
-    abstract public function vote(string $attribute, mixed $subject): int;
+    abstract public function vote(string $attribute, mixed $subject, array $options = []): int;
 
-    abstract public function getException(string $attribute, mixed $subject): ServerException;
+    abstract public function getException(string $attribute, mixed $subject, array $options = []): BusinessException;
 }

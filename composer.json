@@ -21,7 +21,7 @@
     },
     "require": {
         "php": ">=8.0",
-        "onix-systems-php/hyperf-core": ">=1.0.6",
+        "onix-systems-php/hyperf-core": ">=1.0.7",
         "hyperf/constants": "^2.2|^3.0",
         "hyperf/di": "^2.2|^3.0",
         "hyperf/server": "^2.2|^3.0",

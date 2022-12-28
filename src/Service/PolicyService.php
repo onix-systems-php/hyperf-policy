@@ -8,7 +8,6 @@ use OnixSystemsPHP\HyperfPolicy\Annotation\Policy;
 use OnixSystemsPHP\HyperfPolicy\Constants\PolicyVote;
 use OnixSystemsPHP\HyperfPolicy\Policy\AbstractPolicy;
 use Hyperf\Di\Annotation\AnnotationCollector;
-use Hyperf\Server\Exception\ServerException;
 use Psr\Container\ContainerInterface;
 
 #[Service]
@@ -19,14 +18,7 @@ class PolicyService
     ) {
     }
 
-    /**
-     * @param string $attribute
-     * @param mixed  $subject
-     * @throws ServerException
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
-     */
-    public function run(string $attribute, mixed $subject): void
+    public function check(string $attribute, mixed $subject, array $options = []): void
     {
         $voters = AnnotationCollector::getClassesByAnnotation(Policy::class);
 
@@ -46,9 +38,9 @@ class PolicyService
             /** @var AbstractPolicy $voter */
             $voter = $this->container->get($voterClass);
             if ($voter->supports($attribute, $subject)) {
-                $result = $voter->vote($attribute, $subject);
+                $result = $voter->vote($attribute, $subject, $options);
                 if ($result == PolicyVote::ACCESS_DENIED) {
-                    throw $voter->getException($attribute, $subject);
+                    throw $voter->getException($attribute, $subject, $options);
                 }
                 if ($result == PolicyVote::ACCESS_GRANTED) {
                     break;
