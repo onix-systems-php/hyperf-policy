@@ -3,6 +3,7 @@
 declare(strict_types=1);
 namespace OnixSystemsPHP\HyperfPolicy\Service;
 
+use OnixSystemsPHP\HyperfCore\Contract\CorePolicyGuard;
 use OnixSystemsPHP\HyperfCore\Service\Service;
 use OnixSystemsPHP\HyperfPolicy\Annotation\Policy;
 use OnixSystemsPHP\HyperfPolicy\Constants\PolicyVote;
@@ -11,7 +12,7 @@ use Hyperf\Di\Annotation\AnnotationCollector;
 use Psr\Container\ContainerInterface;
 
 #[Service]
-class PolicyService
+class PolicyGuardService implements CorePolicyGuard
 {
     public function __construct(
         private ContainerInterface $container,
@@ -47,5 +48,15 @@ class PolicyService
                 }
             }
         }
+    }
+
+    public function justCheck(string $attribute, mixed $subject, array $options = []): bool
+    {
+        try {
+            $this->check($attribute, $subject, $options);
+        } catch (\Throwable) {
+            return false;
+        }
+        return true;
     }
 }

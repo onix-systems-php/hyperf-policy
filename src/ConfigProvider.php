@@ -9,6 +9,8 @@ class ConfigProvider
     {
         return [
             'dependencies' => [
+                \OnixSystemsPHP\HyperfCore\Contract\CorePolicyGuard::class => \OnixSystemsPHP\HyperfPolicy\Service\PolicyGuardService::class,
+                \OnixSystemsPHP\HyperfCore\Contract\CoreDataGuard::class => \OnixSystemsPHP\HyperfPolicy\Service\DataGuardService::class,
             ],
             'commands' => [
             ],

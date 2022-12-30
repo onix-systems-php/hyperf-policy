@@ -15,3 +15,7 @@ To make it works, you need:
    1. `PolicyVote::ACCESS_DENIED` - stop execution and throw exception specified in `getException` method
    2. `PolicyVote::ACCESS_GRANTED` - allow current action and skip all following policies
    3. `PolicyVote::ACCESS_ABSTAIN` - go to next policy, allow action if no policies left to check
+
+1. create data specifier class based on `OnixSystemsPHP\HyperfPolicy\Policy\AbstractDataSpecifier`
+2. add `OnixSystemsPHP\HyperfPolicy\Annotation\DataSpecifier` annotation to the specifier and setup it's priority (higher number executes first)
+3. specify what repositories and actions your specifier will work with
