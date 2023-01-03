@@ -16,7 +16,7 @@ use OnixSystemsPHP\HyperfPolicy\Annotation\Acl;
 #[Aspect]
 final class AclAspect extends AbstractAspect
 {
-    public $annotations = [
+    public array $annotations = [
         Acl::class,
     ];
 
