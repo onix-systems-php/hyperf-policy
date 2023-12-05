@@ -1,15 +1,21 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of the extension library for Hyperf.
+ *
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+
 namespace OnixSystemsPHP\HyperfPolicy\Service;
 
 use Hyperf\Database\Model\Builder;
+use Hyperf\Di\Annotation\AnnotationCollector;
 use OnixSystemsPHP\HyperfCore\Contract\CoreDataGuard;
 use OnixSystemsPHP\HyperfCore\Repository\AbstractRepository;
 use OnixSystemsPHP\HyperfCore\Service\Service;
 use OnixSystemsPHP\HyperfPolicy\Annotation\DataSpecifier;
 use OnixSystemsPHP\HyperfPolicy\Policy\AbstractDataSpecifier;
-use Hyperf\Di\Annotation\AnnotationCollector;
 use Psr\Container\ContainerInterface;
 
 #[Service]
@@ -17,8 +23,7 @@ class DataGuardService implements CoreDataGuard
 {
     public function __construct(
         private ContainerInterface $container,
-    ) {
-    }
+    ) {}
 
     public function specify(AbstractRepository $repository, Builder $query, string $action = 'list'): Builder
     {

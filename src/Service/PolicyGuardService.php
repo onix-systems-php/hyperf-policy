@@ -1,14 +1,20 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of the extension library for Hyperf.
+ *
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+
 namespace OnixSystemsPHP\HyperfPolicy\Service;
 
+use Hyperf\Di\Annotation\AnnotationCollector;
 use OnixSystemsPHP\HyperfCore\Contract\CorePolicyGuard;
 use OnixSystemsPHP\HyperfCore\Service\Service;
 use OnixSystemsPHP\HyperfPolicy\Annotation\Policy;
 use OnixSystemsPHP\HyperfPolicy\Constants\PolicyVote;
 use OnixSystemsPHP\HyperfPolicy\Policy\AbstractPolicy;
-use Hyperf\Di\Annotation\AnnotationCollector;
 use Psr\Container\ContainerInterface;
 
 #[Service]
@@ -16,8 +22,7 @@ class PolicyGuardService implements CorePolicyGuard
 {
     public function __construct(
         private ContainerInterface $container,
-    ) {
-    }
+    ) {}
 
     public function check(string $attribute, mixed $subject, array $options = []): void
     {
