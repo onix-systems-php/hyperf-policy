@@ -1,6 +1,12 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of the extension library for Hyperf.
+ *
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+
 namespace OnixSystemsPHP\HyperfPolicy\Aspects;
 
 use Hyperf\Di\Annotation\AnnotationCollector;
@@ -13,6 +19,8 @@ use OnixSystemsPHP\HyperfCore\Contract\CoreAuthenticatableProvider;
 use OnixSystemsPHP\HyperfCore\Exception\BusinessException;
 use OnixSystemsPHP\HyperfPolicy\Annotation\Acl;
 
+use function Hyperf\Translation\__;
+
 #[Aspect]
 final class AclAspect extends AbstractAspect
 {
@@ -20,9 +28,7 @@ final class AclAspect extends AbstractAspect
         Acl::class,
     ];
 
-    public function __construct(private CoreAuthenticatableProvider $authenticatableProvider)
-    {
-    }
+    public function __construct(private CoreAuthenticatableProvider $authenticatableProvider) {}
 
     public function process(ProceedingJoinPoint $proceedingJoinPoint): mixed
     {

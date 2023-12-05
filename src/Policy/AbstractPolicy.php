@@ -1,6 +1,12 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of the extension library for Hyperf.
+ *
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+
 namespace OnixSystemsPHP\HyperfPolicy\Policy;
 
 use OnixSystemsPHP\HyperfCore\Contract\CoreAuthenticatableProvider;
@@ -10,8 +16,7 @@ abstract class AbstractPolicy
 {
     public function __construct(
         protected CoreAuthenticatableProvider $authenticatableProvider,
-    ) {
-    }
+    ) {}
 
     /**
      * Determines if the attribute and subject are supported by this voter.

@@ -1,6 +1,12 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of the extension library for Hyperf.
+ *
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+
 namespace OnixSystemsPHP\HyperfPolicy\Policy;
 
 use Hyperf\Database\Model\Builder;
@@ -11,8 +17,7 @@ abstract class AbstractDataSpecifier
 {
     public function __construct(
         protected CoreAuthenticatableProvider $authenticatableProvider,
-    ) {
-    }
+    ) {}
 
     /**
      * Determines if the action and repository are supported by this specifier.
